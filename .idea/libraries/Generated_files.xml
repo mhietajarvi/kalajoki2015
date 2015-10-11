@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/scene-compiled.js" />
+        <item url="file://$PROJECT_DIR$/primitive-compiled.js" />
+        <item url="file://$PROJECT_DIR$/ray-compiled.js" />
+        <item url="file://$PROJECT_DIR$/renderer-compiled.js" />
+        <item url="file://$PROJECT_DIR$/main-compiled.js" />
+        <item url="file://$PROJECT_DIR$/light-compiled.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/scene-compiled.js" />
+      <root url="file://$PROJECT_DIR$/primitive-compiled.js" />
+      <root url="file://$PROJECT_DIR$/ray-compiled.js" />
+      <root url="file://$PROJECT_DIR$/renderer-compiled.js" />
+      <root url="file://$PROJECT_DIR$/main-compiled.js" />
+      <root url="file://$PROJECT_DIR$/light-compiled.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
