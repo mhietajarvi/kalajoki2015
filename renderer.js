@@ -3,91 +3,95 @@
  */
 "use strict";
 
-class PerspectiveCamera {
+function PerspectiveCamera(film) {
 
-    var Pras = vec3.create();
-    var Pcamera = vec3.create();
-    var RasterToCamera = mat4.create();
+    this.vec3tmp = vec3.create();
+    this.ray_tmp = new Ray();
+    this.rasterToCamera = mat4.create();
+    this.cameraToWorld = mat4.create();
+    this.film = film;
+}
 
-    constructor(film) {
-        this.film = film;
-    }
+PerspectiveCamera.prototype = {
 
-    generateRay(sample, ray) {
+    generateRay : function(sample, ray) {
+        ray.mint = 0;
+        ray.maxt = Math.POSITIVE_INFINITY;
+        ray.time = sample.time;
+        ray.depth = 0;
+        return this.generateRayOd(sample, ray.o, ray.d)
+    },
+
+    generateRayOd:  function (sample, origin, direction) {
+
         // Generate raster and camera samples
+        vec3.set(this.vec3tmp, sample.imageX, sample.imageY, 0);
+        mat4.transformMat4(direction, this.vec3tmp, this.rasterToCamera);
 
-        vec3.set(Pras, sample.imageX, sample.imageY, 0);
-        mat4.transformMat4(ray.d, Pras, RasterToCamera);
         // Point Pras = new vec3(sample.imageX, sample.imageY, 0);
         // 4x4 matrix transform
         // RasterToCamera(Pras, &Pcamera);
-        vec3.normalize(ray.d, ray.d);
-        vec3.set(ray.o, 0, 0, 0);
-        // defaults:
-        ray.mint = 0;ad
-        ray.maxt = Math.POSITIVE_INFINITY;
-        ray.time = 0;
-        ray.depth = 0;
-
         // *ray = Ray(Point(0,0,0), Normalize(Vector(Pcamera)), 0.f, INFINITY);
+        vec3.normalize(direction, direction);
+        vec3.set(origin, 0, 0, 0);
+        // defaults:
 
-            // Modify ray for depth of field
-            if (lensRadius > 0.) {
-            // Sample point on lens
-            float lensU, lensV;
-            ConcentricSampleDisk(sample.lensU, sample.lensV, &lensU, &lensV);
-            lensU *= lensRadius;
-            lensV *= lensRadius;
+        mat4.transformMat4(origin, origin, this.cameraToWorld);
+        mat4.transformMat4(direction, direction, this.cameraToWorld);
+        //ray.transform(this.cameraToWorld);
+        return 1;
 
-            // Compute point on plane of focus
-            float ft = focalDistance / ray->d.z;
-            Point Pfocus = (*ray)(ft);
+        //    // Modify ray for depth of field
+        //    if (lensRadius > 0.) {
+        //    // Sample point on lens
+        //    float lensU, lensV;
+        //    ConcentricSampleDisk(sample.lensU, sample.lensV, &lensU, &lensV);
+        //    lensU *= lensRadius;
+        //    lensV *= lensRadius;
+        //
+        //    // Compute point on plane of focus
+        //    float ft = focalDistance / ray->d.z;
+        //    Point Pfocus = (*ray)(ft);
+        //
+        //    // Update ray for effect of lens
+        //    ray->o = Point(lensU, lensV, 0.f);
+        //    ray->d = Normalize(Pfocus - ray->o);
+        //}
+    },
+    generateRayDiff :
+        function (sample, ray_diff) {
 
-            // Update ray for effect of lens
-            ray->o = Point(lensU, lensV, 0.f);
-            ray->d = Normalize(Pfocus - ray->o);
+            var wt = this.generateRay(sample, ray);
+
+            // Find ray after shifting one pixel in the $x$ direction
+            sample.imageX++;
+            var wtx = this.generateRayOd(sample, ray_diff.rx_o, ray_diff.rx_d);
+            sample.imageX--;
+
+            // Find ray after shifting one pixel in the $y$ direction
+            sample.imageY++;
+            var wty = this.generateRayOd(sample, ray_diff.ry_o, ray_diff.ry_d);
+            sample.imageY--;
+
+            if (wtx == 0 || wty == 0)
+                return 0;
+
+            ray_diff.hasDifferentials = true;
+            return wt;
         }
-        ray->time = sample.time;
-        CameraToWorld(*ray, ray);
-        return 1.f;
 }
 
-    GenerateRayDifferential(sample, ray_diff) {
+function SamplerRenderer(sampler, camera, surface_integrator, volume_integrator) {
 
-    float wt = GenerateRay(sample, rd);
-    // Find ray after shifting one pixel in the $x$ direction
-    CameraSample sshift = sample;
-++(sshift.imageX);
-    Ray rx;
-    float wtx = GenerateRay(sshift, &rx);
-    rd->rxOrigin = rx.o;
-    rd->rxDirection = rx.d;
-
-    // Find ray after shifting one pixel in the $y$ direction
---(sshift.imageX);
-++(sshift.imageY);
-    Ray ry;
-    float wty = GenerateRay(sshift, &ry);
-    rd->ryOrigin = ry.o;
-    rd->ryDirection = ry.d;
-    if (wtx == 0.f || wty == 0.f) return 0.f;
-    rd->hasDifferentials = true;
-        return wt;
+    this.sampler = sampler;
+    this.camera = camera;
+    this.surface_integrator = surface_integrator;
+    this.volume_integrator = volume_integrator;
 }
 
-}
-
-class SamplerRenderer {
-
-    constructor(sampler, camera, surface_integrator, volume_integrator) {
-        this.sampler = sampler;
-        this.camera = camera;
-        this.surface_integrator = surface_integrator;
-        this.volume_integrator = volume_integrator;
-    }
-
+SamplerRenderer.prototype = {
     // return true and fill in intersection if intersection found
-    render(scene) {
+    render: function(scene) {
         surface_integrator.preprocess(scene, camera, this);
         volume_integrator.preprocess(scene, camera, this);
         var sample = new Sample(sampler, surface_integrator,
@@ -144,15 +148,15 @@ class SamplerRenderer {
         // Clean up after SamplerRendererTask is done with its image region
 
 
-    }
+    },
 
     // return Spectrum
-    li(scene, ray, sample, rng, arena, isect_out, spectrum_out) {
+    li: function(scene, ray, sample, rng, arena, isect_out, spectrum_out) {
 
-    }
+    },
 
     // return Spectrum
-    transmittance(scene, ray, sample, rng, arena) {
+    transmittance: function(scene, ray, sample, rng, arena) {
 
     }
 
