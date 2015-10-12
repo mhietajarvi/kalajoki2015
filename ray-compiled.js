@@ -12,4 +12,11 @@ function Ray(origin, direction, mint, maxt, time, depth) {
     this.depth = depth;
 }
 
+// transform ray in place
+Ray.prototype.transform = function (mat4_in) {
+
+    mat4.transformMat4(this.o, this.d, mat4_in);
+    mat4.transformMat4(this.d, this.d, mat4_in);
+};
+
 //# sourceMappingURL=ray-compiled.js.map

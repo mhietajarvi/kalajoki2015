@@ -3,13 +3,52 @@
  */
 "use strict";
 
-function PerspectiveCamera(film) {
+//PerspectiveCamera(const AnimatedTransform &cam2world,
+//const float screenWindow[4], float sopen, float sclose,
+//    float lensr, float focald, float fov, Film *film);
 
+function PerspectiveCamera(cameraToWorld, cameraToScreen,
+                           screenTopLeft, screenBottomRight,
+                           shutterOpen, shutterClose, lensRadius, focalDistance,
+                           film) {
+
+    this.cameraToWorld = cameraToWorld;
+    this.cameraToScreen = cameraToScreen;
+    this.shutterOpen = shutterOpen;
+    this.shutterClose = shutterClose;
+    this.lensRadius = lensRadius;
+    this.focalDistance = focalDistance;
+    this.film = film;
+
+    var m = mat4.create();
+    mat4.identity(m);
+    mat4.scale(m, m, vec3.fromValues(
+        film.xResolution,
+        film.yResolution,
+        1));
+    mat4.scale(m, m, vec3.fromValues(
+        1 / (screenBottomRight[0] - screenTopLeft[0]),
+        1 / (screenTopLeft[1] - screenBottomRight[1]),
+        1));
+    mat4.translate(m, m, vec3.fromValues(
+        -screenTopLeft[0],
+        -screenBottomRight[1],
+        0));
+    this.screenToRaster = m;
+
+    this.rasterToScreen = mat4.create();
+    mat4.invert(this.rasterToScreen, this.screenToRaster);
+
+    this.rasterToCamera = mat4.create();
+    mat4.invert(this.rasterToCamera, this.cameraToScreen);
+    mat4.mul(this.rasterToCamera, this.rasterToCamera, this.rasterToScreen);
+
+    //
     this.vec3tmp = vec3.create();
     this.ray_tmp = new Ray();
-    this.rasterToCamera = mat4.create();
-    this.cameraToWorld = mat4.create();
-    this.film = film;
+
+    this.origin = vec3.fromValues(0,0,0);
+    mat4.transformMat4(this.origin, this.origin, this.cameraToWorld);
 }
 
 PerspectiveCamera.prototype = {
@@ -22,7 +61,7 @@ PerspectiveCamera.prototype = {
         return this.generateRayOd(sample, ray.o, ray.d)
     },
 
-    generateRayOd:  function (sample, origin, direction) {
+    generateRayOd: function (sample, origin, direction) {
 
         // Generate raster and camera samples
         vec3.set(this.vec3tmp, sample.imageX, sample.imageY, 0);
@@ -33,52 +72,52 @@ PerspectiveCamera.prototype = {
         // RasterToCamera(Pras, &Pcamera);
         // *ray = Ray(Point(0,0,0), Normalize(Vector(Pcamera)), 0.f, INFINITY);
         vec3.normalize(direction, direction);
-        vec3.set(origin, 0, 0, 0);
+        //vec3.set(origin, 0, 0, 0);
         // defaults:
 
-        mat4.transformMat4(origin, origin, this.cameraToWorld);
+        vec3.copy(origin, this.origin);
+        //mat4.transformMat4(origin, origin, this.cameraToWorld);
         mat4.transformMat4(direction, direction, this.cameraToWorld);
         //ray.transform(this.cameraToWorld);
-        return 1;
 
-        //    // Modify ray for depth of field
-        //    if (lensRadius > 0.) {
-        //    // Sample point on lens
-        //    float lensU, lensV;
-        //    ConcentricSampleDisk(sample.lensU, sample.lensV, &lensU, &lensV);
-        //    lensU *= lensRadius;
-        //    lensV *= lensRadius;
-        //
-        //    // Compute point on plane of focus
-        //    float ft = focalDistance / ray->d.z;
-        //    Point Pfocus = (*ray)(ft);
-        //
-        //    // Update ray for effect of lens
-        //    ray->o = Point(lensU, lensV, 0.f);
-        //    ray->d = Normalize(Pfocus - ray->o);
-        //}
-    },
-    generateRayDiff :
-        function (sample, ray_diff) {
+            // Modify ray for depth of field
+        if (this.lensRadius > 0) {
+            // Sample point on lens
+            concentricSampleDisk([sample.lensU, sample.lensV], this.vec3tmp);
 
-            var wt = this.generateRay(sample, ray);
+            vec2.scale(this.vec3tmp, this.vec3tmp, lensRadius);
 
-            // Find ray after shifting one pixel in the $x$ direction
-            sample.imageX++;
-            var wtx = this.generateRayOd(sample, ray_diff.rx_o, ray_diff.rx_d);
-            sample.imageX--;
+            // Compute point on plane of focus
+            var ft = this.focalDistance / direction[2];
 
-            // Find ray after shifting one pixel in the $y$ direction
-            sample.imageY++;
-            var wty = this.generateRayOd(sample, ray_diff.ry_o, ray_diff.ry_d);
-            sample.imageY--;
+            Point Pfocus = ( * ray     )(ft);
 
-            if (wtx == 0 || wty == 0)
-                return 0;
-
-            ray_diff.hasDifferentials = true;
-            return wt;
+            // Update ray for effect of lens
+            origin = Point(lensU, lensV, 0.f);
+            direction = Normalize(Pfocus - origin);
         }
+        return 1;
+    },
+    generateRayDiff : function (sample, ray_diff) {
+
+        var wt = this.generateRay(sample, ray);
+
+        // Find ray after shifting one pixel in the $x$ direction
+        sample.imageX++;
+        var wtx = this.generateRayOd(sample, ray_diff.rx_o, ray_diff.rx_d);
+        sample.imageX--;
+
+        // Find ray after shifting one pixel in the $y$ direction
+        sample.imageY++;
+        var wty = this.generateRayOd(sample, ray_diff.ry_o, ray_diff.ry_d);
+        sample.imageY--;
+
+        if (wtx == 0 || wty == 0)
+            return 0;
+
+        ray_diff.hasDifferentials = true;
+        return wt;
+    }
 }
 
 function SamplerRenderer(sampler, camera, surface_integrator, volume_integrator) {
