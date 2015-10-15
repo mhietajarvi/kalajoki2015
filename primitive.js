@@ -3,11 +3,23 @@
  */
 "use strict";
 
-class Primitive {
+function Shape() {
+
+}
+
+function Material() {
+
+}
+
+function Primitive() {
+
+
+}
+
+Primitive.prototype = {
 
     // return true and fill in intersection if intersection found
-    intersect(ray, intersection) {
+    intersect: function(ray, intersection) {
 
     }
-
 }

@@ -55,10 +55,12 @@ var cast = function (origin, direction) {
 // camera model:
 // - decides what primary rays to shoot
 // -
-var scene = new Scene();
-if (scene.intersect("ray", "intersection")) {
+
+//var scene = new Scene(aggregate, lights, volume_region);
+
+//if (scene.intersect("ray", "intersection")) {
     //
-}
+//}
 
 
 // lighting calculation
@@ -66,11 +68,11 @@ if (scene.intersect("ray", "intersection")) {
 
 window.onload = function (e) {
 
-    let aa = 1;
+    var aa = 1;
     //var ctx2 = new CanvasRenderingContext2D();
 
-    let evens = [2,4,6,8];
-    let odds = evens.map(v => v + 1);
+    //let evens = [2,4,6,8];
+    //let odds = evens.map(v => v + 1);
 
     var ctx = canvas_2d.getContext("2d");
     // var gl = c.getContext("webgl");

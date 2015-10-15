@@ -67,35 +67,28 @@ PerspectiveCamera.prototype = {
         vec3.set(this.vec3tmp, sample.imageX, sample.imageY, 0);
         mat4.transformMat4(direction, this.vec3tmp, this.rasterToCamera);
 
-        // Point Pras = new vec3(sample.imageX, sample.imageY, 0);
-        // 4x4 matrix transform
-        // RasterToCamera(Pras, &Pcamera);
-        // *ray = Ray(Point(0,0,0), Normalize(Vector(Pcamera)), 0.f, INFINITY);
         vec3.normalize(direction, direction);
-        //vec3.set(origin, 0, 0, 0);
-        // defaults:
 
-        vec3.copy(origin, this.origin);
-        //mat4.transformMat4(origin, origin, this.cameraToWorld);
-        mat4.transformMat4(direction, direction, this.cameraToWorld);
-        //ray.transform(this.cameraToWorld);
-
-            // Modify ray for depth of field
+        // Modify ray for depth of field
         if (this.lensRadius > 0) {
-            // Sample point on lens
-            concentricSampleDisk([sample.lensU, sample.lensV], this.vec3tmp);
-
-            vec2.scale(this.vec3tmp, this.vec3tmp, lensRadius);
-
             // Compute point on plane of focus
             var ft = this.focalDistance / direction[2];
+            vec3.scale(this.vec3tmp, direction, ft);
 
-            Point Pfocus = ( * ray     )(ft);
+            // Sample point on lens
+            concentricSampleDisk([sample.lensU, sample.lensV], origin);
+            vec2.scale(origin, origin, lensRadius);
+            origin[2] = 0;
 
             // Update ray for effect of lens
-            origin = Point(lensU, lensV, 0.f);
-            direction = Normalize(Pfocus - origin);
+            vec3.subtract(direction, this.vec3tmp, origin);
+            vec3.normalize(direction, direction);
+            mat4.transformMat4(origin, origin, this.cameraToWorld);
+        } else {
+            // just use pretransformed origin
+            vec3.copy(origin, this.origin);
         }
+        mat4.transformMat4(direction, direction, this.cameraToWorld);
         return 1;
     },
     generateRayDiff : function (sample, ray_diff) {

@@ -13,8 +13,15 @@ function Ray(origin, direction, mint, maxt, time, depth) {
 }
 
 // transform ray in place
-Ray.prototype.transform = function(mat4_in) {
+Ray.prototype = {
 
-    mat4.transformMat4(this.o, this.d, mat4_in);
-    mat4.transformMat4(this.d, this.d, mat4_in);
+    transform: function (mat4_in) {
+
+        mat4.transformMat4(this.o, this.d, mat4_in);
+        mat4.transformMat4(this.d, this.d, mat4_in);
+    },
+
+    pointAt: function (t, out) {
+        vec3.scaleAndAdd(out, this.o, this.d.t);
+    }
 }
