@@ -13,6 +13,17 @@ function Shape(o2w, w2o, ro) {
     this.shapeId = nextshapeId++;
 }
 
+Shape.prototype = {
+    // BBox
+    worldBound : function() {
+        mat4.transformMat4(this.origin, this.origin, this.cameraToWorld);
+
+        return ( * ObjectToWorld
+        )
+        (ObjectBound());
+    }
+}
+
 function Sphere(o2w, w2o, ro, rad, z0, z1, pm) {
 
     Shape.call(this, o2w, w2o, ro);
@@ -24,10 +35,13 @@ function Sphere(o2w, w2o, ro, rad, z0, z1, pm) {
     this.phiMax = Radians(Clamp(pm, 0.0f, 360.0f));
 }
 
+Sphere.prototype = {
 
-BBox Sphere::ObjectBound() const {
-    return BBox(Point(-radius, -radius, zmin),
-    Point( radius,  radius, zmax));
+    // return BBox
+    objectBound : function() {
+        return BBox(Point(-radius, -radius, zmin),
+            Point(radius, radius, zmax));
+    }
 }
 
 

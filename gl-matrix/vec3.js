@@ -504,6 +504,24 @@ vec3.transformMat4 = function(out, a, m) {
     return out;
 };
 
+// implicit 0 for vec3[3]
+vec3.transformMat4_0 = function(out, a, m) {
+    var x = a[0], y = a[1], z = a[2];
+    out[0] = m[0] * x + m[4] * y + m[8] * z;
+    out[1] = m[1] * x + m[5] * y + m[9] * z;
+    out[2] = m[2] * x + m[6] * y + m[10] * z;
+    return out;
+};
+
+// implicit 0 for vec3[3], use transpose of m
+vec3.transformMat4_0t = function(out, a, m) {
+    var x = a[0], y = a[1], z = a[2];
+    out[0] = m[0] * x + m[1] * y + m[2] * z;
+    out[1] = m[4] * x + m[5] * y + m[6] * z;
+    out[2] = m[8] * x + m[9] * y + m[10] * z;
+    return out;
+};
+
 /**
  * Transforms the vec3 with a mat3.
  *
