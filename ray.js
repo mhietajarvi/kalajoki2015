@@ -10,6 +10,9 @@ function Ray(origin, direction, mint, maxt, time, depth) {
     this.maxt = maxt;
     this.time = time;
     this.depth = depth;
+
+    //Point rxOrigin, ryOrigin;
+    //Vector rxDirection, ryDirection;
 }
 
 // transform ray in place

@@ -36,6 +36,18 @@ GaussianFilter.prototype = {
     }
 }
 
+xyzToRgb = function(xyz, rgb) {
+    rgb[0] =  3.240479*xyz[0] - 1.537150*xyz[1] - 0.498535*xyz[2];
+    rgb[1] = -0.969256*xyz[0] + 1.875991*xyz[1] + 0.041556*xyz[2];
+    rgb[2] =  0.055648*xyz[0] - 0.204043*xyz[1] + 1.057311*xyz[2];
+}
+
+rgbComponentToByte = function(value) {
+// #define TO_BYTE(v) (uint8_t(Clamp(255.f * powf((v), 1.f/2.2f), 0.f, 255.f)))
+
+    return Math.min(Math.max(255.0 * Math.pow(value, 1/2.2), 0), 255);
+}
+
 function Pixel() {
 
     this.Lxyz = [0.0,0.0,0.0];
@@ -146,6 +158,47 @@ Film.prototype = {
         e[2] = this.yPixelStart;
         e[3] = this.yPixelStart + this.yPixelCount;
         return e;
+    },
+
+    // generate image
+    writeImage: function(imageData) {
+
+        var x0 = 0;
+        var x1 = Math.min(this.xPixelCount, imageData.width);
+        var y0 = 0;
+        var y1 = Math.min(this.yPixelCount, imageData.height);
+
+        var d = imageData.data;
+        //for (var i = 0; i < d.length; i += 4) {
+        //    d[i] = (Math.sin(2 * Math.PI * i / n) + 1) * 128;
+        //    d[i + 1] = (Math.cos(0.7 * Math.PI * i / n) + 1) * 128;
+        //    d[i + 2] = (Math.sin(0.4 * Math.PI * i / n) + 1) * 128;
+        //    d[i + 3] = 255;
+        //}
+
+        // Convert image to RGB and compute final pixel values
+        var rgb = new Array(3);
+        var offset = 0;
+        for (var y = y0; y < y1; ++y) {
+            for (var x = x0; x < x1; ++x) {
+
+                var pixel = this.pixels[(x - this.xPixelStart) + (y - this.yPixelStart)*this.xPixelCount];
+                xyzToRgb(pixel.Lxyz, rgb);
+
+                if (pixel.weightSum != 0) {
+                    var invWt = 1 / pixel.weightSum;
+                    rgb[0] = Math.max(0, rgb[0] * invWt);
+                    rgb[1] = Math.max(0, rgb[1] * invWt);
+                    rgb[2] = Math.max(0, rgb[2] * invWt);
+                }
+
+                var p = (y*imageData.width + x)*4;
+                d[p] = rgbComponentToByte(rgb[0]);
+                d[p + 1] = rgbComponentToByte(rgb[1]);
+                d[p + 2] = rgbComponentToByte(rgb[2]);
+                d[p + 3] = 255;
+            }
+        }
     }
 }
 
@@ -194,6 +247,8 @@ var L = new Spectrum();
 L.rgb = [1,0,0];
 
 film.addSample(s,L);
+
+// TODO: write pixels to canvas and verify that adding samples works
 
 
 
