@@ -191,6 +191,18 @@ vec3.min = function(out, a, b) {
     return out;
 };
 
+// sort components so that min and max labels become valid
+vec3.sort = function(min, max) {
+    for (var i = 0; i < 3; i++) {
+        if (min[i] > max[i]) {
+            var tmp = max[i];
+            max[i] = min[i];
+            min[i] = tmp;
+        }
+    }
+};
+
+
 /**
  * Returns the maximum of two vec3's
  *
@@ -234,6 +246,13 @@ vec3.scaleAndAdd = function(out, a, b, scale) {
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     out[2] = a[2] + (b[2] * scale);
+    return out;
+};
+
+vec3.addAndScale = function(out, a, b, scale) {
+    out[0] = (a[0] + b[0]) * scale;
+    out[1] = (a[1] + b[1]) * scale;
+    out[2] = (a[2] + b[2]) * scale;
     return out;
 };
 

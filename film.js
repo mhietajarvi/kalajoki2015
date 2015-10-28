@@ -250,7 +250,22 @@ film.addSample(s,L);
 
 // TODO: write pixels to canvas and verify that adding samples works
 
+var a = { v1 : "f"};
 
+console.log(a.v1);
+console.log(a.v2);
+
+var testfun = function(p1, p2) {
+
+    console.log(p1);
+    var ttt = "asfa";
+    console.log(p2);
+    p2 = ttt;
+    console.log(p2);
+}
+
+testfun("p1val", "p2val");
+testfun("p1val");
 
 //var D = 1;
 //for (y = -D; y <= D; y++) {

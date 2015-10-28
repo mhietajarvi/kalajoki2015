@@ -2,10 +2,6 @@
  * Created by Matti on 27.10.2015.
  */
 
-function DifferentialGeometry() {
-
-}
-
 
 function Intersection() {
 
