@@ -193,3 +193,4 @@ SamplerRenderer.prototype = {
     }
 
 }
+

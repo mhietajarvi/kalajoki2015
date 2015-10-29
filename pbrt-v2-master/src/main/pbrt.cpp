@@ -37,6 +37,7 @@
 #include "parser.h"
 #include "parallel.h"
 
+/*
 // main program
 int main(int argc, char *argv[]) {
     Options options;
@@ -80,5 +81,141 @@ int main(int argc, char *argv[]) {
     pbrtCleanup();
     return 0;
 }
+*/
+
+#include <renderers\samplerrenderer.h>
+#include <samplers\adaptive.h>
+#include <cameras\perspective.h>
+#include <film/image.h>
+#include <filters\box.h>
+#include <transform.h>
+#include <lights\point.h>
+#include <materials\glass.h>
+#include <materials\matte.h>
+#include <materials\shinymetal.h>
+#include <materials\mirror.h>
+#include <shapes\sphere.h>
+#include <accelerators\bvh.h>
+#include <integrators\directlighting.h>
+#include <integrators\path.h>
+#include <integrators\single.h>
+#include <textures\constant.h>
+
+using std::map;
+using std::string;
+using std::vector;
+
+int testSimpleScene() {
+
+	ParamSet params;
+	Transform t = LookAt(Point(0,0,0), Point(0,0,1), Vector(0,1,0));
+
+	AnimatedTransform cam2world(&t, 0, &t, 0);
+
+	params.AddString("filename", new string("render.png"), 1);
+	BoxFilter *filter = CreateBoxFilter(params);
+	ImageFilm *film = CreateImageFilm(params, filter);
+	PerspectiveCamera *camera = CreatePerspectiveCamera(params, cam2world, film);
+	AdaptiveSampler *sampler = CreateAdaptiveSampler(params, film, camera);
+
+	//PathIntegrator *surfaceIg = CreatePathSurfaceIntegrator(params);
+	DirectLightingIntegrator *surfaceIg = CreateDirectLightingIntegrator(params);
+	SingleScatteringIntegrator *volumeIg = CreateSingleScatteringIntegrator(params);
+
+    SamplerRenderer renderer(sampler, camera, surfaceIg, volumeIg, false);
+
+	VolumeRegion *volumeRegion = NULL;
+
+	vector<Light*> lights;
+	lights.push_back(CreatePointLight(Translate(Vector(1,1,1)), params));
+	lights.push_back(CreatePointLight(Translate(Vector(0,4,0)), params));
 
 
+	Transform obj2world = Translate(Vector(-1,-1,3));
+	Transform world2obj = Inverse(obj2world);
+	Sphere *sphere1 = CreateSphereShape(&obj2world, &world2obj, false, params);
+
+	Transform obj2world2 = Translate(Vector(0.7,0.7,2.6));
+	Transform world2obj2 = Inverse(obj2world2);
+	Sphere *sphere2 = CreateSphereShape(&obj2world2, &world2obj2, false, params);
+
+    TextureParams tparams(params, params, map<string, Reference<Texture<float> > >(),
+		map<string, Reference<Texture<Spectrum> > >());
+
+	MirrorMaterial *mirror = new MirrorMaterial(new ConstantTexture<Spectrum>(Spectrum(0.9f)), NULL);
+
+	ShinyMetalMaterial *metal = new ShinyMetalMaterial(
+		new ConstantTexture<Spectrum>(Spectrum(1.f)),
+		new ConstantTexture<float>(0.1f),
+		new ConstantTexture<Spectrum>(Spectrum(1.f)),
+		NULL); //CreateShinyMetalMaterial(Transform(), tparams);
+	GlassMaterial *glass = CreateGlassMaterial(Transform(), tparams);
+
+	float c1[] = {0.4f,0.8f,0.f};
+	Spectrum spec1 = RGBSpectrum::FromRGB(c1);
+
+	MatteMaterial *matte = new MatteMaterial(
+		new ConstantTexture<Spectrum>(spec1),
+		new ConstantTexture<float>(0.1f), NULL);
+		
+  //  Reference<Texture<Spectrum> > Kd = mp.GetSpectrumTexture("Kd", Spectrum(0.5f));
+  //  Reference<Texture<float> > sigma = mp.GetFloatTexture("sigma", 0.f);
+  //  Reference<Texture<float> > bumpMap = mp.GetFloatTextureOrNull("bumpmap");
+  //  return ;		
+		//CreateMatteMaterial(Transform(), tparams);
+
+    Reference<Primitive> prim1 = new GeometricPrimitive(sphere1, metal, NULL);
+    Reference<Primitive> prim2 = new GeometricPrimitive(sphere2, matte, NULL);
+
+	vector<Reference<Primitive> > prims;
+	prims.push_back(prim1);
+	prims.push_back(prim2);
+    Primitive *accel = CreateBVHAccelerator(prims, params);
+
+    Scene *scene = new Scene(accel, lights, volumeRegion);
+
+//    Scene(Primitive *accel, const vector<Light *> &lts, VolumeRegion *vr);
+
+//TODO: 
+//	create scene
+//	step through to see that something happens
+//	start building minimal viable js version
+//	- unit test js functionality against similar c++ unit results
+
+
+	renderer.Render(scene);
+	film->WriteImage(1);
+
+	return 0;
+}
+
+int testDiffGeom() {
+
+	DifferentialGeometry dg(Point(1,1,1),Vector(0,1,0), Vector(0,1,1),
+		Normal(1,1,-1), Normal(1,3,-1), 2, 2, NULL);
+
+	RayDifferential ray(Point(0,0,0), Vector(3,4,5), 0);
+	ray.hasDifferentials = true;
+	ray.rxOrigin = ray.o + Point(0.1, 0.1, 0.1);
+	ray.rxDirection = ray.d + Vector(0.12, 0.12, 0.12);
+	ray.ryOrigin = ray.o + Point(-0.1, 0.1, 0.01);
+	ray.ryDirection = ray.d + Vector(-0.12, 0.12, 0.02);
+
+	dg.ComputeDifferentials(ray);
+
+	printf("dudx %f\n", dg.dudx);
+	printf("dvdx %f\n", dg.dvdx);
+	printf("dudy %f\n", dg.dudy);
+	printf("dvdy %f\n", dg.dvdy);
+	printf("dpdx %f %f %f\n", dg.dpdx.x, dg.dpdx.y, dg.dpdx.z);
+	printf("dpdy %f %f %f\n", dg.dpdy.x, dg.dpdy.y, dg.dpdy.z);
+
+	return 0;
+}
+
+int main(int argc, char *argv[]) {
+
+	//return testSimpleScene();
+
+	return testDiffGeom();
+}

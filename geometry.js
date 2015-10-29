@@ -1,7 +1,6 @@
 /**
  * Created by Matti on 23.9.2015.
  */
-"use strict";
 
 var tmp_vec3 = vec3.create();
 
@@ -26,6 +25,12 @@ Ray.prototype = {
     },
     hasDifferentials : function() {
         return this.hasOwnProperty('rxo');
+    },
+    initDifferentials : function() {
+        this.rxo = vec3.create();
+        this.ryo = vec3.create();
+        this.rxd = vec3.create();
+        this.ryd = vec3.create();
     },
     scaleDifferentials:function(s) {
         vec3.sub(this.rxo, this.rxo, this.o);
