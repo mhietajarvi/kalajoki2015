@@ -32,16 +32,27 @@ DiffGeom.prototype = {
             // Estimate screen space change in $\pt{}$ and $(u,v)$
 
             // Compute auxiliary intersection points with plane
-            float d = -Dot(nn, Vector(p.x, p.y, p.z));
-            Vector rxv(ray.rxOrigin.x, ray.rxOrigin.y, ray.rxOrigin.z);
-            float tx = -(Dot(nn, rxv) + d) / Dot(nn, ray.rxDirection);
-            if (isnan(tx)) goto fail;
+
+            //float d = -Dot(nn, Vector(p.x, p.y, p.z));
+            var d = -vec3.dot(this.nn, this.p);
+
+            // Vector rxv(ray.rxOrigin.x, ray.rxOrigin.y, ray.rxOrigin.z);
+            // float tx = -(Dot(nn, rxv) + d) / Dot(nn, ray.rxDirection);
+            var tx = -(vec3.dot(this.nn, ray.rxo) + d) / vec3.dot(this.nn, ray.rxd);
+
+            //Vector ryv(ray.ryOrigin.x, ray.ryOrigin.y, ray.ryOrigin.z);
+            //float ty = -(Dot(nn, ryv) + d) / Dot(nn, ray.ryDirection);
+
+            var ty = -(vec3.dot(this.nn, ray.ryo) + d) / vec3.dot(this.nn, ray.ryd);
+
+            if (isNaN(tx) || isNaN(ty)) {
+                this.dudx = this.dvdx = 0.;
+                this.dudy = this.dvdy = 0.;
+                this.dpdx = this.dpdy = vec3.Vector(0,0,0);
+                return;
+            }
 
             Point px = ray.rxOrigin + tx * ray.rxDirection;
-            Vector ryv(ray.ryOrigin.x, ray.ryOrigin.y, ray.ryOrigin.z);
-            float ty = -(Dot(nn, ryv) + d) / Dot(nn, ray.ryDirection);
-            if (isnan(ty)) goto fail;
-
             Point py = ray.ryOrigin + ty * ray.ryDirection;
             dpdx = px - p;
             dpdy = py - p;
@@ -70,6 +81,7 @@ DiffGeom.prototype = {
             Bx[1] = px[axes[1]] - p[axes[1]];
             By[0] = py[axes[0]] - p[axes[0]];
             By[1] = py[axes[1]] - p[axes[1]];
+
             if (!SolveLinearSystem2x2(A, Bx, &dudx, &dvdx)) {
                 dudx = 0.; dvdx = 0.;
             }
