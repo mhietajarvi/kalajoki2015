@@ -5,12 +5,17 @@
 
 function Transform(m, mInv) {
 
-    this.m = mat4.clone(m);
-    if (mInv === undefined) {
+    if (m === undefined) {
+        this.m = mat4.create();
         this.mInv = mat4.create();
-        mat4.invert(this.mInv, m);
     } else {
-        this.mInv = mat4.clone(mInv);
+        this.m = mat4.clone(m);
+        if (mInv === undefined) {
+            this.mInv = mat4.create();
+            mat4.invert(this.mInv, m);
+        } else {
+            this.mInv = mat4.clone(mInv);
+        }
     }
 }
 var vec3_unitx = vec3.fromValues(1,0,0);
@@ -62,8 +67,6 @@ Transform.prototype = {
         vec3.transformMat4_0t(dst, src, this.mInv);
         return dst;
     },
-
-
     trRay: function (src, dst) {
         if (dst !== undefined) {
             this.trPoint(src.o, dst.o);
@@ -90,7 +93,6 @@ Transform.prototype = {
         return dst;
     },
     trBBox: function (src, dst) {
-
         var xmin = vec3.fromValues(
             this.m[0] * src.pMin[0],
             this.m[1] * src.pMin[0],
@@ -154,6 +156,6 @@ Transform.prototype = {
         return new Transform(m, mInv);
     },
     swapsHandedness : function () {
-        return mat4.determinant3x3(m) < 0;
+        return mat4.determinant3x3(this.m) < 0;
     }
 }

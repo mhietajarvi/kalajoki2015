@@ -46,6 +46,6 @@ concentricSampleDisk = function (u, d) {
 }
 
 
-var d = [];
-concentricSampleDisk([0.5,0], d);
-console.log(d)
+//var d = [];
+//concentricSampleDisk([0.5,0], d);
+//console.log(d)

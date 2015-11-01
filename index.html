@@ -16,58 +16,32 @@
 <script src="jquery-ui.js"></script>
 
 <p>
-    <label for="spinner">Select a value (modify filter ):</label>
+    <label for="spinner">Y offset:</label>
     <input id="spinner" name="value">
+    <label id="renderTime">-</label>
 </p>
-<!--
-<script>
-    $(function() {
-        var spinner = $( "#spinner" ).spinner();
-
-        $( "#spinner" ).spinner({
-            stop: function( event, ui ) {
-
-                alert( event.type + " value:" + spinner.spinner("value") );
-            }
-        });
-
-        $( "#disable" ).click(function() {
-            if ( spinner.spinner( "option", "disabled" ) ) {
-                spinner.spinner( "enable" );
-            } else {
-                spinner.spinner( "disable" );
-            }
-        });
-        $( "#destroy" ).click(function() {
-            if ( spinner.spinner( "instance" ) ) {
-                spinner.spinner( "destroy" );
-            } else {
-                spinner.spinner();
-            }
-        });
-        $( "#getvalue" ).click(function() {
-            alert( spinner.spinner( "value" ) );
-        });
-        $( "#setvalue" ).click(function() {
-            spinner.spinner( "value", 5 );
-        });
-        $( "button" ).button();
-    });
-</script>-->
 <script src="webgl-debug.js"></script>
 <script src="gl-matrix/common.js"></script>
-<script src="gl-matrix/vec2.js"></script>
 <script src="gl-matrix/vec3.js"></script>
-<script src="gl-matrix/vec4.js"></script>
-<script src="gl-matrix/mat2.js"></script>
-<script src="gl-matrix/mat2d.js"></script>
-<script src="gl-matrix/mat3.js"></script>
 <script src="gl-matrix/mat4.js"></script>
-<script src="gl-matrix/quat.js"></script>
 <script src="geometry.js"></script>
-<script src="renderer.js"></script>
-<script src="scene.js"></script>
+<script src="diffgeom.js"></script>
+<script src="transform.js"></script>
+<script src="shape.js"></script>
+<script src="reflection.js"></script>
+<script src="intersection.js"></script>
+<script src="material.js"></script>
+<script src="primitive.js"></script>
+<script src="light.js"></script>
+<script src="sampler.js"></script>
 <script src="film.js"></script>
-<script src="main.js" ></script>
+<script src="scene.js"></script>
+<script src="integrator.js"></script>
+<script src="renderer.js"></script>
+<script src="test-browser.js"></script>
+
+<script>
+    console.log("ASDFASDFASdf");
+</script>
 </body>
 </html>

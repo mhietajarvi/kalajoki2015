@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396cf8cc-89cf-4414-a8f0-f024f5f74394" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/integrator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/shape.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/intersection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/material.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reflection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test-browser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testtest.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testtest2.js" />
+      <change type="MOVED" beforePath="C:\development\raytrace\sample.js" afterPath="$PROJECT_DIR$/sampler.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/3ds_max/Gtools_PBRT_Exporter.ms" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/3ds_max/Gtools_PBRT_Exporter.ms" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/3ds_max/Gtools_PBRT_Materials.ms" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/3ds_max/Gtools_PBRT_Materials.ms" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/readme_files/basedir.jpg" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/readme_files/basedir.jpg" />
@@ -33,6 +38,20 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/scenes/textures/lines.exr" afterPath="$PROJECT_DIR$/pbrt-v2-master/scenes/textures/lines.exr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/readme_files/shapeimage_.png" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/readme_files/shapeimage_.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/scenes/textures/uffizi_latlong.exr" afterPath="$PROJECT_DIR$/pbrt-v2-master/scenes/textures/uffizi_latlong.exr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_diagonals-thick_18_b81900_40x40.png" afterPath="$PROJECT_DIR$/images/ui-bg_diagonals-thick_18_b81900_40x40.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_diagonals-thick_20_666666_40x40.png" afterPath="$PROJECT_DIR$/images/ui-bg_diagonals-thick_20_666666_40x40.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_flat_10_000000_40x100.png" afterPath="$PROJECT_DIR$/images/ui-bg_flat_10_000000_40x100.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_glass_100_f6f6f6_1x400.png" afterPath="$PROJECT_DIR$/images/ui-bg_glass_100_f6f6f6_1x400.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_glass_100_fdf5ce_1x400.png" afterPath="$PROJECT_DIR$/images/ui-bg_glass_100_fdf5ce_1x400.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_glass_65_ffffff_1x400.png" afterPath="$PROJECT_DIR$/images/ui-bg_glass_65_ffffff_1x400.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="$PROJECT_DIR$/images/ui-bg_gloss-wave_35_f6a828_500x100.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" afterPath="$PROJECT_DIR$/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" afterPath="$PROJECT_DIR$/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-icons_222222_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_222222_256x240.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-icons_228ef1_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_228ef1_256x240.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-icons_ef8c08_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_ef8c08_256x240.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-icons_ffd27a_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_ffd27a_256x240.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ui-icons_ffffff_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_ffffff_256x240.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/docs/usersguide.pdf" afterPath="$PROJECT_DIR$/pbrt-v2-master/docs/usersguide.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/.gitignore" afterPath="$PROJECT_DIR$/pbrt-v2-master/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
@@ -73,7 +92,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/metals/Cu_palik.eta.spd" afterPath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/metals/Cu_palik.eta.spd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/metals/Cu_palik.k.spd" afterPath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/metals/Cu_palik.k.spd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/PBRT/Export.m" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/PBRT/Export.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/3ds_max/Gtools_PBRT_Maps.ms" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/3ds_max/Gtools_PBRT_Maps.ms" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/metals/Hg.eta.spd" afterPath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/metals/Hg.eta.spd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/metals/Hg.k.spd" afterPath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/metals/Hg.k.spd" />
@@ -457,6 +475,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/cie.stdillum.F9.spd" afterPath="$PROJECT_DIR$/pbrt-v2-master/scenes/spds/cie.stdillum.F9.spd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/cleanup.bat" afterPath="$PROJECT_DIR$/pbrt-v2-master/cleanup.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gl-matrix/common.js" afterPath="$PROJECT_DIR$/gl-matrix/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/3rdparty/zlib-1.2.5/compress.c" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/3rdparty/zlib-1.2.5/compress.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/shapes/cone.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/shapes/cone.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/shapes/cone.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/shapes/cone.h" />
@@ -477,6 +496,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/PBRT/demo.m" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/PBRT/demo.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/diffgeom.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/diffgeom.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/diffgeom.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/diffgeom.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diffgeom.js" afterPath="$PROJECT_DIR$/diffgeom.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/lights/diffuse.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/lights/diffuse.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/lights/diffuse.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/lights/diffuse.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/integrators/diffuseprt.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/integrators/diffuseprt.cpp" />
@@ -540,6 +560,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/filters/gaussian.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/filters/gaussian.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/geometry.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/geometry.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/geometry.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/geometry.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geometry.js" afterPath="$PROJECT_DIR$/geometry.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/materials/glass.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/materials/glass.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/materials/glass.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/materials/glass.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/integrators/glossyprt.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/integrators/glossyprt.cpp" />
@@ -588,11 +609,17 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/3ds_max/install.txt" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/3ds_max/install.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/integrator.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/integrator.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/integrator.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/integrator.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/integrator.js" afterPath="$PROJECT_DIR$/integrator.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/intersection.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/intersection.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/intersection.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/intersection.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/dtrace/irradiance-debug.d" afterPath="$PROJECT_DIR$/pbrt-v2-master/dtrace/irradiance-debug.d" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/integrators/irradiancecache.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/integrators/irradiancecache.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/integrators/irradiancecache.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/integrators/irradiancecache.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery-ui.css" afterPath="$PROJECT_DIR$/jquery-ui.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery-ui.js" afterPath="$PROJECT_DIR$/jquery-ui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery-ui.structure.css" afterPath="$PROJECT_DIR$/jquery-ui.structure.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery-ui.theme.css" afterPath="$PROJECT_DIR$/jquery-ui.theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery.js" afterPath="$PROJECT_DIR$/jquery.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/materials/kdsubsurface.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/materials/kdsubsurface.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/materials/kdsubsurface.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/materials/kdsubsurface.h" />
@@ -737,6 +764,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/primitive.js" afterPath="$PROJECT_DIR$/primitive.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/probes.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/probes.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/probes.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/probes.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/progressreporter.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/progressreporter.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/progressreporter.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/progressreporter.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/pbrt.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/pbrt.xcodeproj/project.pbxproj" />
@@ -748,7 +776,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/quaternion.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/quaternion.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/samplers/random.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/samplers/random.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/samplers/random.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/samplers/random.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ray.js" afterPath="$PROJECT_DIR$/ray.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/raytrace.iml" afterPath="$PROJECT_DIR$/.idea/raytrace.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/readme_files/readme.css" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/readme_files/readme.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/readme.html" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/mathematica/readme.html" />
@@ -761,7 +788,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/rng.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/rng.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/rng.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/rng.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/scenes/geometry/room-teapot.pbrt" afterPath="$PROJECT_DIR$/pbrt-v2-master/scenes/geometry/room-teapot.pbrt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample.js" afterPath="$PROJECT_DIR$/sample.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/tools/samplepat.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/tools/samplepat.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/sampler.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/sampler.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/sampler.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/sampler.h" />
@@ -776,6 +802,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/sh.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/sh.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/shape.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/shape.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/shape.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/shape.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shape.js" afterPath="$PROJECT_DIR$/shape.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/materials/shinymetal.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/materials/shinymetal.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/materials/shinymetal.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/materials/shinymetal.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/shrots.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/shrots.cpp" />
@@ -878,6 +905,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/exporters/blender/todo.txt" afterPath="$PROJECT_DIR$/pbrt-v2-master/exporters/blender/todo.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/transform.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/transform.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/core/transform.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/core/transform.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transform.js" afterPath="$PROJECT_DIR$/transform.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/materials/translucent.cpp" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/materials/translucent.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/materials/translucent.h" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/materials/translucent.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbrt-v2-master/src/3rdparty/zlib-1.2.5/trees.c" afterPath="$PROJECT_DIR$/pbrt-v2-master/src/3rdparty/zlib-1.2.5/trees.c" />
@@ -938,65 +966,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="vec3.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gl-matrix/vec3.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ray.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ray.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="renderer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/renderer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+              <caret line="220" column="21" selection-start-line="220" selection-start-column="21" selection-end-line="220" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="integrator.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/integrator.js">
+      <file leaf-file-name="primitive.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/primitive.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scene.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scene.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
               <folding>
-                <element signature="n#!!doc;n#DifferentialGeometry#0" expanded="false" />
+                <element signature="n#!!doc;n#Scene#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shape.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/shape.js">
+      <file leaf-file-name="test-browser.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test-browser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41396105">
-              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#42#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="film.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/film.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.33223686">
+              <caret line="199" column="43" selection-start-line="199" selection-start-column="43" selection-end-line="199" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -1005,21 +1011,29 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846">
-              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+            <state vertical-scroll-proportion="-5.8846154">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.js">
+      <file leaf-file-name="HTML5.js" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+              <caret line="1280" column="0" selection-start-line="1280" selection-start-column="0" selection-end-line="1280" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vec3.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gl-matrix/vec3.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1028,7 +1042,7 @@
         <entry file="file://$PROJECT_DIR$/gl-matrix/mat4.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+              <caret line="817" column="65" selection-start-line="817" selection-start-column="65" selection-end-line="817" selection-end-column="65" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -1036,13 +1050,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gl-matrix/common.js">
+      <file leaf-file-name="integrator.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/integrator.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="n#!!doc;n#Integrator#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reflection.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reflection.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1065,18 +1091,35 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="vm:61" />
-        <option value="$PROJECT_DIR$/light.js" />
-        <option value="$PROJECT_DIR$/primitive.js" />
-        <option value="$PROJECT_DIR$/scene.js" />
-        <option value="$PROJECT_DIR$/renderer.js" />
-        <option value="$PROJECT_DIR$/film.js" />
         <option value="chrome-extension://cfhdojbkjhnklbpkdaibdccddilifddb/include.preload.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/ray.js" />
         <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/integrator.js" />
         <option value="$PROJECT_DIR$/sphere.js" />
+        <option value="$PROJECT_DIR$/test.js" />
+        <option value="$PROJECT_DIR$/comparetest.js" />
+        <option value="$PROJECT_DIR$/diffgeom.js" />
+        <option value="$PROJECT_DIR$/material.js" />
+        <option value="$PROJECT_DIR$/reflection.js" />
+        <option value="$PROJECT_DIR$/sampler.js" />
+        <option value="$PROJECT_DIR$/montecarlo.js" />
+        <option value="$PROJECT_DIR$/testtest2.js" />
+        <option value="$PROJECT_DIR$/gl-matrix/mat4.js" />
+        <option value="$PROJECT_DIR$/gl-matrix/vec3.js" />
+        <option value="$PROJECT_DIR$/testtest.js" />
+        <option value="$PROJECT_DIR$/gl-matrix/common.js" />
+        <option value="$PROJECT_DIR$/transform.js" />
+        <option value="$PROJECT_DIR$/scene.js" />
+        <option value="$PROJECT_DIR$/integrator.js" />
+        <option value="$PROJECT_DIR$/intersection.js" />
+        <option value="$PROJECT_DIR$/primitive.js" />
+        <option value="vm:67" />
         <option value="$PROJECT_DIR$/shape.js" />
+        <option value="$PROJECT_DIR$/geometry.js" />
+        <option value="$PROJECT_DIR$/renderer.js" />
+        <option value="$PROJECT_DIR$/film.js" />
+        <option value="$PROJECT_DIR$/light.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/test-browser.js" />
       </list>
     </option>
   </component>
@@ -1088,10 +1131,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3" />
-    <option name="y" value="5" />
+    <option name="x" value="-1" />
+    <option name="y" value="1" />
     <option name="width" value="1012" />
-    <option name="height" value="1062" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -1116,9 +1159,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1139,29 +1181,46 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="JavaScriptLanguageLevel" value="ES6" />
-    <property name="JavaScriptPreferStrict" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="JavaScriptLanguageLevel" value="ES5" />
+    <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/comparetest.js" />
     <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\development\raytrace" />
       <recent name="C:\Users\Matti\WebstormProjects\raytrace" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
-    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/raytrace/index.html">
+    <configuration default="false" name="shape.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="shape.js" working-dir="$PROJECT_DIR$">
+      <method />
+    </configuration>
+    <configuration default="false" name="testtest.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="testtest.js" working-dir="$PROJECT_DIR$">
+      <method />
+    </configuration>
+    <configuration default="false" name="testtest2.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="testtest2.js" working-dir="$PROJECT_DIR$">
+      <method />
+    </configuration>
+    <configuration default="false" name="geometry.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="geometry.js" working-dir="$PROJECT_DIR$">
+      <method />
+    </configuration>
+    <configuration default="false" name="test-browser.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="test-browser.js" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1188,6 +1247,10 @@
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSRemoteDebug" factoryName="Node.js Remote Debug">
+      <node-js-remote-debug />
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -1197,16 +1260,32 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/raytrace/index.html">
+      <method />
+    </configuration>
     <configuration default="false" name="main.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="main.js" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.main.js" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+    <configuration default="false" name="renderer.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="renderer.js" working-dir="$PROJECT_DIR$">
+      <method />
+    </configuration>
+    <list size="8">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.main.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.renderer.js" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.shape.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.testtest.js" />
+      <item index="5" class="java.lang.String" itemvalue="Node.js.testtest2.js" />
+      <item index="6" class="java.lang.String" itemvalue="Node.js.geometry.js" />
+      <item index="7" class="java.lang.String" itemvalue="Node.js.test-browser.js" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.test-browser.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.testtest2.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.testtest.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.shape.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.geometry.js" />
       </list>
     </recent_temporary>
   </component>
@@ -1233,27 +1312,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="5" width="1012" height="1062" extended-state="0" />
+    <frame x="-1" y="1" width="1012" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20180723" sideWeight="0.48757765" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20180723" sideWeight="0.8820755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329602" sideWeight="0.4966942" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3249476" sideWeight="0.27710843" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32484075" sideWeight="0.3242972" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329602" sideWeight="0.4966942" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49663678" sideWeight="0.44807371" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41932058" sideWeight="0.74219537" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29273084" sideWeight="0.48005697" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20180723" sideWeight="0.5124224" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3249476" sideWeight="0.72289157" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20180723" sideWeight="0.11792453" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32484075" sideWeight="0.6757028" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32908705" sideWeight="0.49244714" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1270,119 +1349,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primitive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gl-matrix/vec3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ray.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gl-matrix/mat4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gl-matrix/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primitive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gl-matrix/vec3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ray.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gl-matrix/mat4.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1408,7 +1382,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
           <folding>
-            <element signature="e#0#41#0" expanded="false" />
+            <element signature="n#!!doc;n#Scene#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1417,9 +1391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1431,7 +1402,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ray.js">
+    <entry file="file://$PROJECT_DIR$/geometry.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
@@ -1469,7 +1440,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="false" />
+            <element signature="n#!!doc;n#Scene#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1478,13 +1449,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ray.js">
+    <entry file="file://$PROJECT_DIR$/geometry.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
@@ -1537,51 +1505,192 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/gl-matrix/mat3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IntelliJIdea14/system/extLibs/nodejs-v4.1.1-src/core-modules-sources/lib/fs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28060523">
+          <caret line="395" column="33" selection-start-line="395" selection-start-column="33" selection-end-line="395" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-ui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6705298">
+          <caret line="14375" column="27" selection-start-line="14375" selection-start-column="27" selection-end-line="14375" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
+        <state vertical-scroll-proportion="0.0">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="418" column="0" selection-start-line="418" selection-start-column="0" selection-end-line="418" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/montecarlo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_PLUGINS_DIR$/NodeJS/lib/NodeJS.jar!/com/jetbrains/nodejs/library/node-globals-stub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16377649">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IntelliJIdea14/system/extLibs/nodejs-v4.1.1-src/core-modules-sources/lib/module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49710983">
+          <caret line="284" column="0" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IntelliJIdea14/system/extLibs/nodejs-v4.1.1-src/core-modules-sources/lib/domain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testtest2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gl-matrix/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testtest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="29" selection-start-line="22" selection-start-column="0" selection-end-line="35" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spectrum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transform.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/material.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#Material#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diffgeom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intersection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc;n#Intersection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shape.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="145" column="1" selection-start-line="145" selection-start-column="1" selection-end-line="145" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sampler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#Sample#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geometry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/light.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scene.js">
+    <entry file="file://$PROJECT_DIR$/film.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primitive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33266932">
-          <caret line="609" column="0" selection-start-line="609" selection-start-column="0" selection-end-line="609" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gl-matrix/vec3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
+          <caret line="63" column="9" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1589,92 +1698,153 @@
     <entry file="file://$PROJECT_DIR$/gl-matrix/mat4.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+          <caret line="817" column="65" selection-start-line="817" selection-start-column="65" selection-end-line="817" selection-end-column="65" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gl-matrix/common.js">
+    <entry file="file://$PROJECT_DIR$/scene.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc;n#Scene#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11201299">
-          <caret line="1272" column="20" selection-start-line="1272" selection-start-column="20" selection-end-line="1272" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ray.js">
+    <entry file="file://$PROJECT_DIR$/primitive.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/integrator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+          <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
           <folding>
-            <element signature="n#!!doc;n#DifferentialGeometry#0" expanded="false" />
+            <element signature="n#!!doc;n#Integrator#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/film.js">
+    <entry file="file://$PROJECT_DIR$/reflection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shape.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41396105">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/renderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="220" column="21" selection-start-line="220" selection-start-column="21" selection-end-line="220" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gl-matrix/vec3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1280" column="0" selection-start-line="1280" selection-start-column="0" selection-end-line="1280" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-browser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33223686">
+          <caret line="199" column="43" selection-start-line="199" selection-start-column="43" selection-end-line="199" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>raytrace</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Generated files</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

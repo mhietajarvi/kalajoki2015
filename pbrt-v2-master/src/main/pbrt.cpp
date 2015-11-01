@@ -85,9 +85,14 @@ int main(int argc, char *argv[]) {
 
 #include <renderers\samplerrenderer.h>
 #include <samplers\adaptive.h>
+#include <samplers\random.h>
+#include <samplers\bestcandidate.h>
+#include <samplers\halton.h>
+#include <samplers\stratified.h>
 #include <cameras\perspective.h>
 #include <film/image.h>
 #include <filters\box.h>
+#include <filters\gaussian.h>
 #include <transform.h>
 #include <lights\point.h>
 #include <materials\glass.h>
@@ -97,6 +102,7 @@ int main(int argc, char *argv[]) {
 #include <shapes\sphere.h>
 #include <accelerators\bvh.h>
 #include <integrators\directlighting.h>
+#include <integrators\whitted.h>
 #include <integrators\path.h>
 #include <integrators\single.h>
 #include <textures\constant.h>
@@ -105,21 +111,75 @@ using std::map;
 using std::string;
 using std::vector;
 
+void print(const char *name, const Vector &v) {
+	printf("%s %g %g %g\n", name, v.x, v.y, v.z);
+}
+void print(const char *name, const Normal &v) {
+	printf("%s %g %g %g\n", name, v.x, v.y, v.z);
+}
+void print(const char *name, const Point &v) {
+	printf("%s %g %g %g\n", name, v.x, v.y, v.z);
+}
+
+void print(const DifferentialGeometry &dg) {
+
+	printf("dudx %g\n", dg.dudx);
+	printf("dvdx %g\n", dg.dvdx);
+	printf("dudy %g\n", dg.dudy);
+	printf("dvdy %g\n", dg.dvdy);
+	printf("u %g\n", dg.u);
+	printf("v %g\n", dg.v);
+	print("dpdx", dg.dpdx);
+	print("dpdy", dg.dpdy);
+	print("dpdu", dg.dpdu);
+	print("dpdv", dg.dpdv);
+	print("dndu", dg.dndu);
+	print("dndv", dg.dndv);
+	print("p", dg.p);
+	print("nn", dg.nn);
+}
+
 int testSimpleScene() {
 
 	ParamSet params;
-	Transform t = LookAt(Point(0,0,0), Point(0,0,1), Vector(0,1,0));
+
+	int xres = 500;
+	int yres = 500;
+	params.AddInt("xresolution", &xres, 1);
+	params.AddInt("yresolution", &yres, 1);
+
+	Transform t = LookAt(Point(0,0,0), Point(0,0,-100), Vector(0,1,0));
 
 	AnimatedTransform cam2world(&t, 0, &t, 0);
 
 	params.AddString("filename", new string("render.png"), 1);
-	BoxFilter *filter = CreateBoxFilter(params);
+	//BoxFilter *filter = CreateBoxFilter(params);
+	GaussianFilter *filter = new GaussianFilter(3, 3, 0.001f);
+
+
 	ImageFilm *film = CreateImageFilm(params, filter);
 	PerspectiveCamera *camera = CreatePerspectiveCamera(params, cam2world, film);
-	AdaptiveSampler *sampler = CreateAdaptiveSampler(params, film, camera);
+
+	//AdaptiveSampler *sampler = CreateAdaptiveSampler(params, film, camera);
+	//Sampler *sampler = CreateRandomSampler(params, film, camera);
+	//Sampler *sampler = CreateBestCandidateSampler(params, film, camera);
+	//Sampler *sampler = CreateHaltonSampler(params, film, camera);
+	//StratifiedSampler *sampler = CreateStratifiedSampler(params, film, camera);
+
+    bool jitter = false;
+    int xstart, xend, ystart, yend;
+    film->GetSampleExtent(&xstart, &xend, &ystart, &yend);
+    int xsamp = 1;
+    int ysamp = 1;
+    StratifiedSampler *sampler = new StratifiedSampler(
+		xstart, xend, ystart, yend,
+		xsamp, ysamp,
+        jitter, camera->shutterOpen, camera->shutterClose);
 
 	//PathIntegrator *surfaceIg = CreatePathSurfaceIntegrator(params);
-	DirectLightingIntegrator *surfaceIg = CreateDirectLightingIntegrator(params);
+	//DirectLightingIntegrator *surfaceIg = CreateDirectLightingIntegrator(params);
+	WhittedIntegrator *surfaceIg = CreateWhittedSurfaceIntegrator(params);
+
 	SingleScatteringIntegrator *volumeIg = CreateSingleScatteringIntegrator(params);
 
     SamplerRenderer renderer(sampler, camera, surfaceIg, volumeIg, false);
@@ -127,11 +187,18 @@ int testSimpleScene() {
 	VolumeRegion *volumeRegion = NULL;
 
 	vector<Light*> lights;
-	lights.push_back(CreatePointLight(Translate(Vector(1,1,1)), params));
-	lights.push_back(CreatePointLight(Translate(Vector(0,4,0)), params));
 
+	float il1[] = {1.f,1.f,1.f};
+	float il2[] = {2.f,0.5f,0.3f};
+	float il3[] = {0.f,0.2f,1.3f};
 
-	Transform obj2world = Translate(Vector(-1,-1,3));
+	lights.push_back(new PointLight(Translate(Vector(2,2,0)), RGBSpectrum::FromRGB(il1)));
+	lights.push_back(new PointLight(Translate(Vector(-2,-2,-2)), RGBSpectrum::FromRGB(il2)));
+	lights.push_back(new PointLight(Translate(Vector(-2, 2,-2)), RGBSpectrum::FromRGB(il3)));
+	//(MCreatePointLight(Translate(Vector(2,2,0)), params));
+	//lights.push_back(CreatePointLight(Translate(Vector(0,4,0)), params));
+
+	Transform obj2world = Translate(Vector(0,0,-2));
 	Transform world2obj = Inverse(obj2world);
 	Sphere *sphere1 = CreateSphereShape(&obj2world, &world2obj, false, params);
 
@@ -151,12 +218,13 @@ int testSimpleScene() {
 		NULL); //CreateShinyMetalMaterial(Transform(), tparams);
 	GlassMaterial *glass = CreateGlassMaterial(Transform(), tparams);
 
-	float c1[] = {0.4f,0.8f,0.f};
-	Spectrum spec1 = RGBSpectrum::FromRGB(c1);
+	//float c1[] = {0.f,10.99f,0.f};
+	float c1[] = {5.f,5.f,5.f};
+	Spectrum spec1 = RGBSpectrum::FromRGB(c1, SpectrumType::SPECTRUM_REFLECTANCE);
 
 	MatteMaterial *matte = new MatteMaterial(
 		new ConstantTexture<Spectrum>(spec1),
-		new ConstantTexture<float>(0.1f), NULL);
+		new ConstantTexture<float>(0.0f), NULL);
 		
   //  Reference<Texture<Spectrum> > Kd = mp.GetSpectrumTexture("Kd", Spectrum(0.5f));
   //  Reference<Texture<float> > sigma = mp.GetFloatTexture("sigma", 0.f);
@@ -164,12 +232,12 @@ int testSimpleScene() {
   //  return ;		
 		//CreateMatteMaterial(Transform(), tparams);
 
-    Reference<Primitive> prim1 = new GeometricPrimitive(sphere1, metal, NULL);
-    Reference<Primitive> prim2 = new GeometricPrimitive(sphere2, matte, NULL);
+    Reference<Primitive> prim1 = new GeometricPrimitive(sphere1, matte, NULL);
+    //Reference<Primitive> prim2 = new GeometricPrimitive(sphere2, metal, NULL);
 
 	vector<Reference<Primitive> > prims;
 	prims.push_back(prim1);
-	prims.push_back(prim2);
+	//prims.push_back(prim2);
     Primitive *accel = CreateBVHAccelerator(prims, params);
 
     Scene *scene = new Scene(accel, lights, volumeRegion);
@@ -189,7 +257,9 @@ int testSimpleScene() {
 	return 0;
 }
 
-int testDiffGeom() {
+void testDiffGeom() {
+
+	printf("\n### testDiffGeom:\n");
 
 	DifferentialGeometry dg(Point(1,1,1),Vector(0,1,0), Vector(0,1,1),
 		Normal(1,1,-1), Normal(1,3,-1), 2, 2, NULL);
@@ -202,20 +272,117 @@ int testDiffGeom() {
 	ray.ryDirection = ray.d + Vector(-0.12, 0.12, 0.02);
 
 	dg.ComputeDifferentials(ray);
+	print(dg);
+}
 
-	printf("dudx %f\n", dg.dudx);
-	printf("dvdx %f\n", dg.dvdx);
-	printf("dudy %f\n", dg.dudy);
-	printf("dvdy %f\n", dg.dvdy);
-	printf("dpdx %f %f %f\n", dg.dpdx.x, dg.dpdx.y, dg.dpdx.z);
-	printf("dpdy %f %f %f\n", dg.dpdy.x, dg.dpdy.y, dg.dpdy.z);
 
-	return 0;
+void testSphere(DifferentialGeometry *dg) {
+
+	printf("\n### testSphere:\n");
+
+	Transform o2w = Translate(Vector(0.7,0.7,0.17));
+	Transform w2o = Inverse(o2w);
+
+	Sphere sp(&o2w, &w2o, false, 3.3, -2, 1, 270);
+
+	//DifferentialGeometry dg;
+
+	Ray ray(Point(-10,0,0), Vector(1,0.1,0.1), 0, 100);
+	float tHit;
+	float rayEpsilon;
+	bool isect = sp.Intersect(ray, &tHit, &rayEpsilon, dg);
+
+	printf("isect %i\n", (int)isect);
+	printf("tHit %g\n", tHit);
+	printf("rayEpsilon %g\n", rayEpsilon);
+	print(*dg);
+}
+
+void testMaterial(DifferentialGeometry &dg) {
+
+	float c1[] = {1.f,1.f,1.f};
+	Spectrum spec1 = RGBSpectrum::FromRGB(c1, SpectrumType::SPECTRUM_REFLECTANCE);
+
+	MatteMaterial *matte = new MatteMaterial(
+		new ConstantTexture<Spectrum>(spec1),
+		new ConstantTexture<float>(0.0f), NULL);
+
+	MemoryArena m;
+
+	BSDF* bsdf = matte->GetBSDF(dg, dg, m);
+
+	Vector woW = Point(-10,0,0) - dg.p;
+	Vector wiW = Point(-7,2,2) - dg.p;
+	// world vectors
+
+	Spectrum spec = bsdf->f(woW, wiW);
+	float rgb[3];
+	spec.ToRGB(rgb);
+
+	printf("spectrum %g %g %g\n", rgb[0], rgb[1], rgb[2]);
+
+}
+
+void testCamera() {
+
+	ParamSet params;
+
+	GaussianFilter *filter = new GaussianFilter(2, 2, 2);
+	float crop[4] = { 0, 1, 0, 1 };
+    ImageFilm* film = new ImageFilm(100, 100, filter, crop, "filename", false);
+
+	Transform t = LookAt(Point(0,0,0), Point(0,0,-100), Vector(0,1,0));
+	AnimatedTransform cam2world(&t, 0, &t, 0);
+
+	//BoxFilter *filter = CreateBoxFilter(params);
+	//ImageFilm *film = CreateImageFilm(params, filter);
+	PerspectiveCamera *camera = CreatePerspectiveCamera(params, cam2world, film);
+
+    bool jitter = false; //params.FindOneBool("jitter", true);
+    // Initialize common sampler parameters
+    int xstart, xend, ystart, yend;
+    film->GetSampleExtent(&xstart, &xend, &ystart, &yend);
+    int xsamp = 1;
+    int ysamp = 1;
+    StratifiedSampler *sampler = new StratifiedSampler(
+		xstart, xend, ystart, yend,
+		xsamp, ysamp,
+        jitter, camera->shutterOpen, camera->shutterClose);
+
+	RNG rng;
+	Sample sample(sampler, NULL, NULL, NULL);
+
+	int count = 0;
+	while (sampler->GetMoreSamples(&sample, rng) && count < 10) {
+
+		//sample.imageX
+		printf("sample imageX: %g, imageY: %g\n", sample.imageX, sample.imageY);
+
+		Ray ray;
+		camera->GenerateRay(sample, &ray);
+
+		print("ray.o", ray.o);
+		print("ray.d", ray.d);
+		printf("ray mint: %g, maxt: %g", ray.mint, ray.maxt);
+
+		count++;
+	}
+
+	//CameraSample sample;
+
+	//camera->GenerateRay(
 }
 
 int main(int argc, char *argv[]) {
 
 	//return testSimpleScene();
 
-	return testDiffGeom();
+	//testCamera();
+	testSimpleScene();
+	//DifferentialGeometry dg;
+	//testSphere(&dg);
+	//testMaterial(dg);
+	//testDiffGeom();
+
+	return 0;
 }

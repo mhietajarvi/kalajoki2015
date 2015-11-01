@@ -1,6 +1,3 @@
-/**
- * Created by Matti on 13.10.2015.
- */
 
 const FILTER_TABLE_SIZE = 16;
 
@@ -42,6 +39,12 @@ xyzToRgb = function(xyz, rgb) {
     rgb[2] =  0.055648*xyz[0] - 0.204043*xyz[1] + 1.057311*xyz[2];
 }
 
+rgbToXyz = function(rgb, xyz) {
+    xyz[0] = 0.412453 * rgb[0] + 0.357580 * rgb[1] + 0.180423 * rgb[2];
+    xyz[1] = 0.212671 * rgb[0] + 0.715160 * rgb[1] + 0.072169 * rgb[2];
+    xyz[2] = 0.019334 * rgb[0] + 0.119193 * rgb[1] + 0.950227 * rgb[2];
+}
+
 rgbComponentToByte = function(value) {
 // #define TO_BYTE(v) (uint8_t(Clamp(255.f * powf((v), 1.f/2.2f), 0.f, 255.f)))
 
@@ -50,7 +53,7 @@ rgbComponentToByte = function(value) {
 
 function Pixel() {
 
-    this.Lxyz = [0.0,0.0,0.0];
+    this.Lxyz = vec3.create(); // [0.0,0.0,0.0];
     this.weightSum = 0.0;
 
     //float splatXYZ[3];
@@ -58,13 +61,12 @@ function Pixel() {
 
 // crop[0] = xstart, crop[1] = xend
 // crop[2] = ystart, crop[3] = yend
-function Film(xResolution, yResolution, filter, crop, filename) {
+function Film(xResolution, yResolution, filter, crop) {
 
     this.xResolution = xResolution;
     this.yResolution = yResolution;
     this.filter = filter;
     this.crop = crop;
-    this.filename = filename;
 
     // Compute film image extent
     this.xPixelStart = Math.ceil(this.xResolution * this.crop[0]);
@@ -92,6 +94,17 @@ function Film(xResolution, yResolution, filter, crop, filename) {
 
 Film.prototype = {
 
+    reset : function() {
+        for (var i = 0; i < this.pixels.length; i++) {
+            var L = this.pixels[i].Lxyz;
+            L[0] = 0;
+            L[1] = 0;
+            L[2] = 0;
+            this.pixels[i].weightSum = 0.0;
+            //this.pixels[i].Lxyz = new Pixel();
+        }
+    },
+
     // add radiance spectrum for given sample
 
     addSample : function(sample, L) {
@@ -114,7 +127,8 @@ Film.prototype = {
         }
 
         // Loop over filter support and add sample to pixel arrays
-        var xyz = L.toXYZ();
+        var xyz = vec3.create();
+        rgbToXyz(L, xyz);
 
         var ifx = [];
         // Precompute $x$ and $y$ filter table offsets
@@ -203,69 +217,69 @@ Film.prototype = {
 }
 
 // implement only RGB spectrum initially
-function Spectrum() {
-    this.rgb = new Array(3);
-}
-
-Spectrum.prototype = {
-
-    toRGB :function() {
-        return this.rgb;
-    },
-    toXYZ :function() {
-        var xyz = new Array(3);
-        xyz[0] = 0.412453*this.rgb[0] + 0.357580*this.rgb[1] + 0.180423*this.rgb[2];
-        xyz[1] = 0.212671*this.rgb[0] + 0.715160*this.rgb[1] + 0.072169*this.rgb[2];
-        xyz[2] = 0.019334*this.rgb[0] + 0.119193*this.rgb[1] + 0.950227*this.rgb[2];
-        return xyz;
-    }
+//function Spectrum() {
+//    this.rgb = new Array(3);
 //}
-//static RGBSpectrum FromXYZ(const float xyz[3],
-//    SpectrumType type = SPECTRUM_REFLECTANCE) {
-//    RGBSpectrum r;
-//    XYZToRGB(xyz, r.c);
-//    return r;
+//
+//Spectrum.prototype = {
+//
+//    toRGB :function() {
+//        return this.rgb;
+//    },
+//    toXYZ :function() {
+//        var xyz = new Array(3);
+//        xyz[0] = 0.412453*this.rgb[0] + 0.357580*this.rgb[1] + 0.180423*this.rgb[2];
+//        xyz[1] = 0.212671*this.rgb[0] + 0.715160*this.rgb[1] + 0.072169*this.rgb[2];
+//        xyz[2] = 0.019334*this.rgb[0] + 0.119193*this.rgb[1] + 0.950227*this.rgb[2];
+//        return xyz;
+//    }
+////}
+////static RGBSpectrum FromXYZ(const float xyz[3],
+////    SpectrumType type = SPECTRUM_REFLECTANCE) {
+////    RGBSpectrum r;
+////    XYZToRGB(xyz, r.c);
+////    return r;
+////}
 //}
-}
 
-function Sample(x,y) {
+//function Sample(x,y) {
+//
+//    this.imageX = x;
+//    this.imageY = y;
+//    //this.lensU;
+//    //this.lensV;
+//    //this.time;
+//}
 
-    this.imageX = x;
-    this.imageY = y;
-    //this.lensU;
-    //this.lensV;
-    //this.time;
-}
 
-
-var filter = new GaussianFilter(2, 2, 2);
-
-var film = new Film(100, 100, filter, [0,1, 0,1], "");
-
-var s = new Sample(2,3);
-var L = new Spectrum();
-L.rgb = [1,0,0];
-
-film.addSample(s,L);
-
-// TODO: write pixels to canvas and verify that adding samples works
-
-var a = { v1 : "f"};
-
-console.log(a.v1);
-console.log(a.v2);
-
-var testfun = function(p1, p2) {
-
-    console.log(p1);
-    var ttt = "asfa";
-    console.log(p2);
-    p2 = ttt;
-    console.log(p2);
-}
-
-testfun("p1val", "p2val");
-testfun("p1val");
+//var filter = new GaussianFilter(2, 2, 2);
+//
+//var film = new Film(100, 100, filter, [0,1, 0,1], "");
+//
+//var s = new Sample(2,3);
+//var L = new Spectrum();
+//L.rgb = [1,0,0];
+//
+//film.addSample(s,L);
+//
+//// TODO: write pixels to canvas and verify that adding samples works
+//
+//var a = { v1 : "f"};
+//
+//console.log(a.v1);
+//console.log(a.v2);
+//
+//var testfun = function(p1, p2) {
+//
+//    console.log(p1);
+//    var ttt = "asfa";
+//    console.log(p2);
+//    p2 = ttt;
+//    console.log(p2);
+//}
+//
+//testfun("p1val", "p2val");
+//testfun("p1val");
 
 //var D = 1;
 //for (y = -D; y <= D; y++) {

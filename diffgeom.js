@@ -1,7 +1,3 @@
-/**
- * Created by Matti on 29.10.2015.
- */
-
 
 function DiffGeom(p, dpdu, dpdv, dndu, dndv, u, v, shape) {
 
@@ -17,8 +13,6 @@ function DiffGeom(p, dpdu, dpdv, dndu, dndv, u, v, shape) {
     this.u = u;
     this.v = v;
 
-    this.shape = shape;
-
     this.nn = vec3.create();
     vec3.cross(this.nn, dpdu, dpdv);
     vec3.normalize(this.nn, this.nn);
@@ -29,6 +23,12 @@ function DiffGeom(p, dpdu, dpdv, dndu, dndv, u, v, shape) {
     this.dvdy = 0;
     this.dpdx = vec3.create();
     this.dpdy = vec3.create();
+
+    this.shape = shape;
+
+    if (shape && (!shape.reverseOrientation != !shape.transformSwapsHandedness)) {
+        vec3.negate(this.nn, this.nn);
+    }
 }
 
 function solveLinearSystem2x2(A, B) {
@@ -102,55 +102,3 @@ DiffGeom.prototype = {
         this.dvdy = sy[1];
     }
 }
-
-var fs = require("fs");
-
-function read(f) {
-    return fs.readFileSync(f).toString();
-}
-function include(f) {
-    eval.apply(global, [read(f)]);
-}
-
-include("gl-matrix/common.js");
-include("gl-matrix/vec3.js");
-include("geometry.js");
-
-
-var s = vec3.create();
-
-// verify that results match those of c++ version
-
-var dg = new DiffGeom(
-    vec3.fromValues(1,1,1),
-    vec3.fromValues(0,1,0),
-    vec3.fromValues(0,1,1),
-    vec3.fromValues(1,1,-1),
-    vec3.fromValues(1,3,-1),
-    2,2,undefined
-)
-var ray = new Ray(
-    vec3.fromValues(0,0,0),
-    vec3.fromValues(3,4,5),
-    0,
-    Math.POSITIVE_INFINITY,
-    0,0);
-
-ray.initDifferentials();
-
-vec3.add(ray.rxo, ray.o, vec3.fromValues(0.1, 0.1, 0.1));
-vec3.add(ray.rxd, ray.d, vec3.fromValues(0.12, 0.12, 0.12));
-vec3.add(ray.ryo, ray.o, vec3.fromValues(-0.1, 0.1, 0.01));
-vec3.add(ray.ryd, ray.d, vec3.fromValues(-0.12, 0.12, 0.02));
-//  Point rxo, ryo;
-//  Vector rxd, ryd;
-
-dg.computeDifferentials(ray);
-
-var text = "";
-for (var prop in dg) {
-    text += prop + " : " + dg[prop]+"\n";
-}
-console.log(text);
-
-// jee, works as specified, next integrator (base + whitted), then shape

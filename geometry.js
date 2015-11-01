@@ -2,16 +2,14 @@
  * Created by Matti on 23.9.2015.
  */
 
-var tmp_vec3 = vec3.create();
-
 
 function Ray(o, d, mint, maxt, time, depth) {
-    this.o = o;
-    this.d = d;
-    this.mint = mint;
-    this.maxt = maxt;
-    this.time = time;
-    this.depth = depth;
+    this.o = o ? vec3.clone(o) : vec3.create();
+    this.d = d ? vec3.clone(d) : vec3.create();
+    this.mint = mint || 0;
+    this.maxt = maxt || Math.POSITIVE_INFINITY;
+    this.time = time || 0;
+    this.depth = depth || 0;
 
     // having these optional values makes this RayDifferential
     //  Point rxo, ryo;
@@ -52,7 +50,9 @@ function BBox(pt1, pt2) {
 
 BBox.prototype = {
 
-    // adds given point/box to extent of this
+    tmp_vec3 : vec3.create(),
+
+// adds given point/box to extent of this
     union: function (bbox_or_pt) {
         if (bbox_or_pt instanceof BBox) {
             vec3.min(this.pMin, this.pMin, bbox_or_pt.pMin);
@@ -83,21 +83,24 @@ BBox.prototype = {
         this.pMax[2] += delta;
     },
     surfaceArea: function () {
-        vec3.sub(tmp_vec3, this.pMax, this.pMin);
+        var v = BBox.prototype.tmp_vec3;
+        vec3.sub(v, this.pMax, this.pMin);
         return 2 * (
-            tmp_vec3[0] * tmp_vec3[1] +
-            tmp_vec3[0] * tmp_vec3[2] +
-            tmp_vec3[1] * tmp_vec3[2]);
+            v[0] * v[1] +
+            v[0] * v[2] +
+            v[1] * v[2]);
     },
     volume: function () {
-        vec3.sub(tmp_vec3, this.pMax, this.pMin);
-        return tmp_vec3[0] * tmp_vec3[1] * tmp_vec3[2];
+        var v = BBox.prototype.tmp_vec3;
+        vec3.sub(v, this.pMax, this.pMin);
+        return v[0] * v[1] * v[2];
     },
     maximumExtent: function () {
-        vec3.sub(tmp_vec3, this.pMax, this.pMin);
-        if (tmp_vec3[0] > tmp_vec3[1] && tmp_vec3[0] > tmp_vec3[2]) {
+        var v = BBox.prototype.tmp_vec3;
+        vec3.sub(v, this.pMax, this.pMin);
+        if (v[0] > v[1] && v[0] > v[2]) {
             return 0;
-        } else if (tmp_vec3[1] > tmp_vec3[2]) {
+        } else if (v[1] > v[2]) {
             return 1;
         } else {
             return 2;

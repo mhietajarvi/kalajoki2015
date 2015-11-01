@@ -742,3 +742,17 @@ vec3.str = function (a) {
     return 'vec3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ')';
 };
 
+
+vec3.distSquared = function(a, b) {
+    var x = a[0] - b[0],
+        y = a[1] - b[1],
+        z = a[2] - b[2];
+    return x*x + y*y + z*z;
+};
+
+vec3.dist = function(a, b) {
+    var x = a[0] - b[0],
+        y = a[1] - b[1],
+        z = a[2] - b[2];
+    return Math.sqrt(x*x + y*y + z*z);
+};
